@@ -1,0 +1,95 @@
+{% extends 'homepage.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>library Page</title>
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/login.css')}}"
+    />
+    <style>
+      h1 {
+        margin-top: 120px;
+        text-align: center;
+        color: ;
+      }
+
+      p {
+        font-family: "Times New Roman";
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 10px;
+      }
+      .login_form {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .li {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      img {
+        margin-left: 45%;
+        width: 200px;
+        height: 200px;
+      }
+      p {
+        font-size: 20px;
+      }
+
+      h3 {
+        text-align: center;
+        color: #0066cc;
+      }
+
+      a {
+        text-decoration: none;
+        color: #009933;
+        font-weight: bold;
+      }
+      .readmore {
+        margin-left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Digital Library</h1>
+    <form action="/library" method="get" class="login_form">
+      <p>Search for books in the library:</p>
+      <input type="text" name="q" placeholder="Search..." />
+      <input type="submit" value="Search" />
+    </form>
+    <div class="container">
+      {% if books %}
+      <ul class="ul">
+        {% for book in books %}
+        <li class="li">
+          <img src="{{ book.thumbnail }}" alt="Book Thumbnail" />
+          <h3>Title: {{ book.title }}</h3>
+          <p>Authors: {{ book.authors }}</p>
+          <p>{{ book.description }}</p>
+          <a href="{{ book.link }}" target="_blank" class="readmore"
+            >Read More</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No books found.</p>
+      {% endif %}
+    </div>
+    {%endblock content%}
+  </body>
+</html>

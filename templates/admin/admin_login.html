@@ -1,0 +1,35 @@
+{%extends 'homepage.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Register page</title>     
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+    <style>
+        .login_form{
+            margin-top:120px;
+            margin-bottom:50px;
+
+            }
+    </style>
+</head>
+<body>
+  
+    <form action="/admin_login" method="post" class="login_form">
+        <h1>Admin Login</h1>
+        {% if error %}
+        <p style="color: red;padding-bottom: 10px;">{{ error }}</p>
+    {% endif %}
+    <label for="username">Admin Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="password">Admin Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="login"></Submit>
+
+</form>
+{%endblock content%}
