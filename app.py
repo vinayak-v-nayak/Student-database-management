@@ -47,62 +47,68 @@ mycursor = mydb.cursor()
 # Create a table to store registration data if it doesn't exist
 mycursor.execute('''
 CREATE TABLE IF NOT EXISTS users_reg (
-id INT AUTO_INCREMENT  ,
-name VARCHAR(255),
-email VARCHAR(255),
-user_id VARCHAR(20) UNIQUE,
-phone VARCHAR(10),
-gender VARCHAR(10),
-birthdate DATE,
-adress VARCHAR(255),
-password VARCHAR(255),
-usertype VARCHAR(255),
-PRIMARY KEY (id,user_id)
+    id INT AUTO_INCREMENT,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    user_id VARCHAR(20) UNIQUE,
+    phone VARCHAR(10),
+    gender VARCHAR(10),
+    birthdate DATE,
+    address VARCHAR(255),
+    password VARCHAR(255),
+    usertype VARCHAR(255),
+    PRIMARY KEY (id)
 )
 ''')
+
 mycursor.execute('''
 CREATE TABLE IF NOT EXISTS student_marks (
-id INT AUTO_INCREMENT PRIMARY KEY,
-user_id VARCHAR(20), 
-semester INT NOT NULL,
-subject1_marks FLOAT,
-subject2_marks FLOAT,
-subject3_marks FLOAT,
-subject4_marks FLOAT,
-subject5_marks FLOAT,
-subject6_marks FLOAT,
-FOREIGN KEY (user_id) REFERENCES users_reg (user_id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(20), 
+    semester INT NOT NULL,
+    subject1_marks FLOAT,
+    subject2_marks FLOAT,
+    subject3_marks FLOAT,
+    subject4_marks FLOAT,
+    subject5_marks FLOAT,
+    subject6_marks FLOAT,
+    FOREIGN KEY (user_id) REFERENCES users_reg (user_id)
 )
 ''')
 
 mycursor.execute('''
 CREATE TABLE IF NOT EXISTS semester(
-id INT AUTO_INCREMENT PRIMARY KEY,
-sem INT NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id varchar(20),
+    sem INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users_reg (user_id)
 )
 ''')
 
 mycursor.execute('''
 CREATE TABLE IF NOT EXISTS contact(
-id INT AUTO_INCREMENT PRIMARY KEY,
-user_id varchar(100),
-email varchar(100),
-subject varchar(255),
-message varchar(1000),
-solution varchar(10)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100),
+    email VARCHAR(100),
+    subject VARCHAR(255),
+    message VARCHAR(1000),
+    solution VARCHAR(10),
+    FOREIGN KEY (user_id) REFERENCES users_reg (user_id)
 )
 ''')
 
 mycursor.execute('''
 CREATE TABLE IF NOT EXISTS payment(
-id INT AUTO_INCREMENT PRIMARY KEY,
-user_id varchar(100),
-amount VARCHAR(255),
-payment_id VARCHAR(255),
-payment_category VARCHAR(255),
-payment_status VARCHAR(255)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100),
+    amount VARCHAR(255),
+    payment_id VARCHAR(255),
+    payment_category VARCHAR(255),
+    payment_status VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users_reg (user_id)
 )
 ''')
+
 mycursor.execute("SELECT * FROM semester")
 result = mycursor.fetchall()
 

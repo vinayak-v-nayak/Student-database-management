@@ -16,18 +16,14 @@ def fees_payment():
     payment_category = request.form['payment_category']
     amount = request.form['amount']
     payment_id = request.form['payment_id']
-
-    mycursor.execute(f"SELECT count(1) FROM users_reg WHERE user_id='{user_id}'" )
-    user1 = mycursor.fetchone()
-        
-    if user1[0]<1:
-        return render_template('student/student_fees_payment.html',error="USN does not exist")
-    
     sql = "insert into payment(user_id,amount,payment_id,payment_category,payment_status) values(%s,%s,%s,%s,%s) "
     val = (user_id,amount,payment_id,payment_category,"Not Approved")
     mycursor.execute(sql,val)
     mydb.commit()
-    return render_template('student/student_fees_payment.html',success="Request sent successfully")
+    
+    mycursor.execute("SELECT * FROM users_reg WHERE user_id=%s", (user_id,))
+    user = mycursor.fetchone()
+    return render_template('student/student_fees_payment.html',success="Request sent successfully",user=user)
 
 
 @student_payment_route.route('/check_payment_status', methods=['POST'])

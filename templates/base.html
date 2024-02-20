@@ -1,178 +1,58 @@
-{% extends 'homepage.html' %} {% block content %}
-<div class="container">
-  <div
-    id="carouselExampleInterval"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-inner">
-      <div class="carousel-item active my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/11.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
+{% extends 'homepage.html' %}
+
+{% block content %}
+<style>
+   .background-image {
+      background-image: url('{{url_for("static",filename="images/2222.jpg")}}');
+      background-size: cover;
+      background-position: center;
+      height: 100vh; 
+      width: 90%;
+      display: flex;
+      overflow: hidden;
+
+   }
+   .left_col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+   }
+   .temp-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+   }
+   .typewriter {
+   overflow: hidden; /* Ensures text doesn't overflow its container */
+   white-space: nowrap; /* Prevents text from wrapping */
+   animation: typing 10s steps(30, end) forwards ;
+}
+
+@keyframes typing {
+   from {
+      width: 0;
+   }
+   to {
+      width: 100%;
+   }
+}
+
+
+</style>
+
+<div class="temp-grid bg-white">
+  <div class="left_col">
+    <!-- <p class="h1" style="font-family: cursive;font-size: 70px;color:red;"> Student Database Management System </p> -->
+    <img src="../static/images/home_page.jpg" alt="" style="background-repeat: no-repeat;background-size: cover;height: 300px;">
+  </div>
+  <div class="" style="display: flex; flex-direction: column;justify-content: space-evenly;">
+      <h3 style="display: flex;justify-content: center;">Student Database Management System</h3>
+      <div style="display: flex;justify-content: center;flex-direction: column;">
+         <a class="text-white bg-dark p-2 mb-2 m-auto rounded" style="width: 50%;text-decoration: none;text-align: center;" href="/student_login">Student Login</a>
+         <a class="text-white bg-dark p-2 mb-2 m-auto rounded" style="width: 50%;text-decoration: none;text-align: center;" href="/teacher_login">Teacher Login</a>
+         <a class="text-white bg-dark p-2 mb-2 m-auto rounded" style="width: 50%;text-decoration: none;text-align: center;" href="/admin_login">Admin Login</a>
       </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/12.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/13.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/14.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/15.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/16.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/17.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/18.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/19.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/20.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/21.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/22.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/23.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/24.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/25.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/26.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/27.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="2000">
-        <img
-          src="{{url_for('static',filename='images/28.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="5000">
-        <img
-          src="{{url_for('static',filename='images/29.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="5000">
-        <img
-          src="{{url_for('static',filename='images/30.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-      <div class="carousel-item my-5" data-bs-interval="5000">
-        <img
-          src="{{url_for('static',filename='images/31.jpeg')}}"
-          class="d-block mx-auto"
-          style="width: 80%; height: 550px"
-        />
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleInterval"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleInterval"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 </div>
-
 {% endblock content %}

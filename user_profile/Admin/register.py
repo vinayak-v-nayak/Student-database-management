@@ -18,8 +18,7 @@ def submit():
     phone = request.form['mobileNumber']
     gender = request.form['gender']
     usertype = request.form['usertype']
-    
-    
+
     mycursor.execute(f"SELECT count(1) FROM users_reg WHERE email='{email}'" )
     user2 = mycursor.fetchone()   
     if user2[0]>0:
@@ -29,6 +28,9 @@ def submit():
     user1 = mycursor.fetchone()  
     if user1[0]>0:
         return render_template('admin/registration.html',error="User ID already exist")
+    
+    if len(phone)!=10:
+        return render_template('admin/registration.html',error="Enter 10 digits phone number")
     
 
     sql = "INSERT INTO users_reg (name,user_id, email,phone,gender,usertype) VALUES (%s, %s, %s,%s,%s, %s)"

@@ -15,6 +15,14 @@ def login_user():
     user_id = request.form['user_id']
     subject = request.form['subject']
     message = request.form['message']
+    mydb.commit()
+
+    mycursor.execute(f"SELECT count(1) FROM users_reg WHERE user_id='{user_id}'" )
+    user1 = mycursor.fetchone()
+        
+    if user1[0]<1:
+        return render_template('contact.html',error="Provide valid user_id")
+        
 
     sql = "INSERT INTO contact (user_id, email, subject, message, solution) VALUES (%s, %s, %s, %s, 'pending')"
     val = (user_id, email, subject, message)

@@ -21,7 +21,7 @@ h1{
 label{
     color: white;
 }
-.login_form{
+/* .login_form{
     /*background: linear-gradient(135deg,#71b7e6,#9b59b6);*/
 background-color: black;
     margin: 450px;
@@ -30,7 +30,7 @@ background-color: black;
     border-radius: 50px;
     padding-left: 150px;
     padding-right: 150px;
-}
+} */
 input[type="email"],
 input[type="text"],
 input[type="password"],textarea{

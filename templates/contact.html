@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>contact Page</title>
 
-    <link
+  <!--  <link
       rel="stylesheet"
       href="{{url_for('static',filename='css/login.css')}}"
     />
@@ -14,30 +14,44 @@
       .login_form {
         margin-top: 120px;
         margin-bottom: 20px;
-      }
+      }-->
     </style>
   </head>
-  <body>
-    <form action="/contact" method="post" class="login_form">
-      <h1>Contact Us</h1>
+  <body class="bg-secondary">
+    <form action="/contact" method="post" class="container rounded bg-white p-3 shadow" style=" margin:auto;margin-top: 100px;margin-bottom: 20px; width: 600px; padding: 50px;">
+      <h3 class="m-2">Contact Us</h3>
       {% if success %}
-      <p style="color: rgb(0, 255, 0)">{{ success }}</p>
+      <p class="text-success">{{ success }}</p>
       {% endif %}
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" /><br /><br />
-
-      <label for="user_id">User Id:</label>
-      <input type="text" id="user_id" name="user_id" required /><br /><br />
-
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" required /><br /><br />
-
-      <label for="message">Explanation:</label>
-      <textarea name="message" rows="6"></textarea>
-
-      <input type="submit" value="Submit" />
+      {% if error %}
+      <p class="text-danger">{{ error }}</p>
+      {% endif %}
+      <div class="m-2">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" />
+      </div>
+    
+      <div class="m-2">
+        <label for="user_id" class="form-label">User Id:</label>
+        <input type="text" id="user_id" name="user_id" class="form-control" required />
+      </div>
+    
+      <div class="m-2">
+        <label for="subject" class="form-label">Subject:</label>
+        <input type="text" id="subject" name="subject" class="form-control" required />
+      </div>
+    
+      <div class="m-2">
+        <label for="message" class="form-label">Explanation:</label>
+        <textarea name="message" rows="6" class="form-control" ></textarea>
+      </div>
+    
+      <div class="m-auto mt-3" style="width: 50%;">
+        <button type="submit" class="btn btn-dark" style="width: 100%;">Submit</button>
+      </div>
     </form>
-
+    
+    
     {%endblock content%}
   </body>
 </html>

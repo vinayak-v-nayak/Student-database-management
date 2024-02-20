@@ -78,30 +78,28 @@ def admin_payment_to_register():
 @nav_route.route('/logout')
 def logout():
     session.pop("user_id", None)
-    return render_template('homepage.html')
+    return render_template('base.html')
 
 @nav_route.route('/logout_teacher')
 def logout_teacher():
     session.pop("user_id1", None)
-    return render_template('homepage.html')
+    return render_template('base.html')
 
 
 @nav_route.route('/go_to_student_payment')
 def go_to_student_payment():
-    return render_template('student/student_fees_payment.html')
+    if "user_id" in session:
+        user_id=session["user_id"]
+        mycursor.execute("SELECT * FROM users_reg WHERE user_id=%s", (user_id,))
+        user = mycursor.fetchone()
+        return render_template('student/student_fees_payment.html',user=user)
 
 
 @nav_route.route('/student_check_payment_status')
 def student_check_payment_status():
     if "user_id" in session:
         user_id=session["user_id"]
-        mycursor.execute("SELECT * FROM users_reg WHERE user_id=%s", (user_id,))
-        user = mycursor.fetchone()
-        if user[9]=='student':
-            return render_template('student/student_check_payment_status.html',user_id=user_id)
-        else:
-            return render_template('student/student_login.html')
-        
+        return render_template('student/student_check_payment_status.html',user_id=user_id)
     else:
         return render_template('student/student_login.html')
 
